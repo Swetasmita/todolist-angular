@@ -1,0 +1,33 @@
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+#submitBtn {
+  margin-top: 20px;
+}
+#myCheckbox {
+  margin-left: 25px;
+}
+#submitForm {
+}
+#inputTaskBox {
+  width: 250px;
+}
+#edit {
+  width: 60px;
+}
+#save {
+  width: 60px;
+}
+#delete {
+  width: 80px;
+}
+.edit {
+  border: solid 2px orange;
+}
+.non-edit {
+  border: none;
+}
+.crossed {
+  text-decoration: line-through;
+}

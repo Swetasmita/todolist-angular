@@ -1,0 +1,38 @@
+<div class="container">
+  <h1>To-Do Application</h1>
+  <form id="submitForm" #taskForm="ngForm" (ngSubmit)="onSubmit(taskForm)">
+    <div class="form-group mt-3">
+      <input type="text" class="form-control" ngModel name="task" placeholder="Enter task" required>
+      <small id="errorMsg" class="form-text text-danger" *ngIf="taskForm.invalid && taskForm.dirty">Required
+        field</small>
+    </div>
+    <button [disabled]="taskForm.invalid" id="submitBtn" type="submit" class="btn btn-primary">Add</button>
+  </form>
+  <hr>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Task</th>
+        <th scope="col">Completed</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Save</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of taskArray; index as i">
+        <td>
+          <input #inputTask type="text" class="form-control" id="inputTaskBox" value="{{item.taskName}}"
+            [readOnly]="!item.isEditable"
+            [ngClass]="{'edit': item.isEditable, 'not-edit': !item.isEditable, 'crossed': item.isCompleted}" />
+        </td>
+        <td> <input (change)="onCheck(i)" type="checkbox" id="myCheckbox" [checked]="item.isCompleted"></td>
+        <td><button id="delete" class="btn btn-danger" (click)="onDelete(i)">Delete</button></td>
+        <td><button id="edit" class="btn btn-primary" (click)="onEdit(i)" [disabled]="item.isEditable">Edit</button>
+        </td>
+        <td><button id="save" class="btn btn-warning" (click)="onSave(i, inputTask.value)"
+            [disabled]="!item.isEditable">Save</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
